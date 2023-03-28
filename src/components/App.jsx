@@ -10,6 +10,7 @@ import { fetchMovieHome, fetchMovieDetalis } from 'components/Search/Search';
 
 export const App = () => {
   const [images, setImages] = useState([]);
+  const [id, setId] = useState('');
 
   return (
     <Routes>

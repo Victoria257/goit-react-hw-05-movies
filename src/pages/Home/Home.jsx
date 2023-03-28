@@ -16,24 +16,25 @@ function Home({ fetchMovieHome, images, setImages }) {
       }
     };
     homes();
-  }, [fetchMovieHome, setImages]);
+  }, [setImages]);
 
   return (
     <div>
       <h4>Home page</h4>
       <ul>
-        {images.map(({ title, id, backdrop_path }) => (
-          <li key={id}>
-            <NavLink to={`movies/${id}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${backdrop_path}`}
-                alt={title}
-              />
-              <p>{title}</p>
-            </NavLink>
-            <NavLink to="movies/:movieId"></NavLink>
-          </li>
-        ))}
+        {images &&
+          images.map(({ title, id, backdrop_path }) => (
+            <li key={id}>
+              <NavLink to={`movies/${id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${backdrop_path}`}
+                  alt={title}
+                />
+                <p>{title}</p>
+              </NavLink>
+              <NavLink to="movies/:movieId"></NavLink>
+            </li>
+          ))}
       </ul>
     </div>
   );
