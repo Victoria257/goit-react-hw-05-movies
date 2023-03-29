@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams, Outlet } from 'react-router-dom';
 
 const MovieDetails = ({ fetchMovieDetalis }) => {
   const [imagesId, setImagesId] = useState([]);
@@ -40,7 +40,7 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
   // const { poster_path, title, vote_average, overview } = changeImage;
 
   return (
-    <div>
+    <>
       <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
       <h2>{title}</h2>
       <p>User score: {vote_average}</p>
@@ -50,8 +50,17 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
       <div>
         {genres && genres.map(({ id, name }) => <span key={id}>{name}</span>)}
       </div>
-      <p>Additional information</p>
-    </div>
+      <h5>Additional information</h5>
+      <ul>
+        <li>
+          <NavLink to={'cast'}>Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to={'reviews'}>Reviews</NavLink>
+        </li>
+      </ul>
+      <Outlet />
+    </>
   );
 };
 

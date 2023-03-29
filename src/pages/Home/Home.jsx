@@ -32,7 +32,7 @@ function Home({ fetchMovieHome, images, setImages }) {
                 />
                 <p>{title}</p>
               </NavLink>
-              <NavLink to="movies/:movieId"></NavLink>
+              {/* <NavLink to="movies/:movieId"></NavLink> */}
             </li>
           ))}
       </ul>

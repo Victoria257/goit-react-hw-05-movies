@@ -10,7 +10,12 @@ export const fetchMovieHome = async () => {
   return response.data;
 };
 
-//https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=uk&query=pig&page=1&include_adult=false&region=uk
+export const fetchMovieSearch = async name => {
+  const response = await axios.get(
+    `${URL_API}search/movie?api_key=${KEY_API}&language=uk&include_adult=false&region=uk&query=${name}`
+  );
+  return response.data;
+};
 
 export const fetchMovieDetalis = async movieId => {
   const response = await axios.get(
@@ -19,9 +24,16 @@ export const fetchMovieDetalis = async movieId => {
   return response.data;
 };
 
-export const fetchMovieSearch = async name => {
+export const fetchCast = async movieId => {
   const response = await axios.get(
-    `${URL_API}search/movie?api_key=${KEY_API}&language=uk&include_adult=false&region=uk&query=${name}`
+    `${URL_API}movie/${movieId}/credits?api_key=${KEY_API}&language=uk&region=uk`
+  );
+  return response.data;
+};
+
+export const fetchReviews = async movieId => {
+  const response = await axios.get(
+    `${URL_API}movie/${movieId}/reviews?api_key=${KEY_API}&language=ua-uk`
   );
   return response.data;
 };

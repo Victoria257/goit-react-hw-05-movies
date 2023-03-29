@@ -10,6 +10,8 @@ import {
   fetchMovieHome,
   fetchMovieDetalis,
   fetchMovieSearch,
+  fetchCast,
+  fetchReviews,
 } from 'components/ApiMovie/ApiMovie';
 
 export const App = () => {
@@ -35,9 +37,13 @@ export const App = () => {
         <Route
           path="movies/:movieId"
           element={<MovieDetails fetchMovieDetalis={fetchMovieDetalis} />}
-        ></Route>
-        <Route path="movies/:movieId/cast" element={<Cast />}></Route>
-        <Route path="movies/:movieId/reviews" element={<Reviews />}></Route>
+        >
+          <Route path="cast" element={<Cast fetchCast={fetchCast} />}></Route>
+          <Route
+            path="reviews"
+            element={<Reviews fetchReviews={fetchReviews} />}
+          ></Route>
+        </Route>
         <Route path="*" element={<Home />}></Route>
       </Route>
     </Routes>

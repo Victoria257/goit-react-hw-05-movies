@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { NavLink, useSearchParams } from 'react-router-dom';
 
 const Movies = ({ fetchMovieSearch }) => {
-  const [name, setName] = useState('мумія');
+  const [name, setName] = useState('');
   const [images, setImages] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchName = searchParams.get('searchName') || '';
 
   useEffect(() => {
-    const searchName = async () => {
+    const searchNames = async () => {
       try {
         const data = await fetchMovieSearch(name);
         setImages(data.results);
@@ -15,13 +19,16 @@ const Movies = ({ fetchMovieSearch }) => {
         console.log('final-3');
       }
     };
-    searchName();
+    searchNames();
   }, [name, fetchMovieSearch]);
+
+  const handleChange = event => {
+    setSearchParams({ searchName: event.target.value });
+  };
 
   const formSubmit = event => {
     event.preventDefault();
-    setName('аватар');
-    // console.log(event.target.name);
+    setName(searchName);
   };
 
   return (
@@ -30,16 +37,23 @@ const Movies = ({ fetchMovieSearch }) => {
       <form onSubmit={formSubmit}>
         <input
           type="text"
-          // name="name"
-          // value={name}
-          // onChange={handleChange}
+          value={searchName}
+          onChange={handleChange}
           placeholder="Введи назву фільму"
+          autoComplete="off"
         />
         <button type="submit">Пошук</button>
       </form>
-      <div>
-        {images && images.map(({ id, title }) => <li key={id}>{title}</li>)}
-      </div>
+      <ul>
+        {images &&
+          images.map(({ id, title }) => (
+            <li key={id}>
+              <NavLink to={`${id}`}>
+                <p>{title}</p>
+              </NavLink>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };
