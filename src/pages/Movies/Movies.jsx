@@ -1,13 +1,14 @@
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import { useState, useEffect } from 'react';
 
 const Movies = ({ fetchMovieSearch }) => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState('мумія');
+  const [images, setImages] = useState('');
 
   useEffect(() => {
     const searchName = async () => {
       try {
-        const response = await fetchMovieSearch(name);
+        const data = await fetchMovieSearch(name);
+        setImages(data.results);
       } catch (error) {
         console.log(error);
       } finally {
@@ -15,16 +16,30 @@ const Movies = ({ fetchMovieSearch }) => {
       }
     };
     searchName();
-  }, [name]);
+  }, [name, fetchMovieSearch]);
+
+  const formSubmit = event => {
+    event.preventDefault();
+    setName('аватар');
+    // console.log(event.target.name);
+  };
 
   return (
     <div>
       <h4>Movies</h4>
-      <form>
-        <input type="text" placeholder="Введи назву фільму" />
+      <form onSubmit={formSubmit}>
+        <input
+          type="text"
+          // name="name"
+          // value={name}
+          // onChange={handleChange}
+          placeholder="Введи назву фільму"
+        />
         <button type="submit">Пошук</button>
       </form>
-      ;{/* <MovieDetails /> */}
+      <div>
+        {images && images.map(({ id, title }) => <li key={id}>{title}</li>)}
+      </div>
     </div>
   );
 };

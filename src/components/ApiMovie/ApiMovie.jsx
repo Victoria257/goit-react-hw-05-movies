@@ -21,7 +21,7 @@ export const fetchMovieDetalis = async movieId => {
 
 export const fetchMovieSearch = async name => {
   const response = await axios.get(
-    `${URL_API}search/movie?api_key=${KEY_API}&language=en-uk&include_adult=false&region=uk&query=${name}`
+    `${URL_API}search/movie?api_key=${KEY_API}&language=uk&include_adult=false&region=uk&query=${name}`
   );
   return response.data;
 };
