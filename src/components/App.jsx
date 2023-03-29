@@ -6,11 +6,14 @@ import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import { fetchMovieHome, fetchMovieDetalis } from 'components/Search/Search';
+import {
+  fetchMovieHome,
+  fetchMovieDetalis,
+  fetchMovieSearch,
+} from 'components/ApiMovie/ApiMovie';
 
 export const App = () => {
   const [images, setImages] = useState([]);
-  const [id, setId] = useState('');
 
   return (
     <Routes>
@@ -25,7 +28,10 @@ export const App = () => {
             />
           }
         ></Route>
-        <Route path="movies" element={<Movies />}></Route>
+        <Route
+          path="movies"
+          element={<Movies fetchMovieSearch={fetchMovieSearch} />}
+        ></Route>
         <Route
           path="movies/:movieId"
           element={<MovieDetails fetchMovieDetalis={fetchMovieDetalis} />}

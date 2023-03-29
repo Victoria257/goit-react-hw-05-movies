@@ -7,7 +7,7 @@ function Home({ fetchMovieHome, images, setImages }) {
       try {
         const data = await fetchMovieHome();
         const imageList = data.results;
-        console.log(imageList);
+        // console.log(imageList);
         setImages(imageList);
       } catch (error) {
         console.log(error);

@@ -9,7 +9,7 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
     const detalis = async () => {
       try {
         const data = await fetchMovieDetalis(movieId);
-        console.log(data);
+        // console.log(data);
         setImagesId(data);
       } catch (error) {
         console.log(error);
