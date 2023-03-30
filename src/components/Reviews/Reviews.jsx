@@ -11,7 +11,7 @@ const Reviews = ({ fetchReviews }) => {
       setReviewList(data.results);
     };
     review();
-  }, [fetchReviews]);
+  }, [fetchReviews, movieId]);
   return (
     <ul>
       {reviewList.length > 0 ? (
