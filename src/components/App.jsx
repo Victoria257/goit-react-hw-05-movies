@@ -1,11 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
-import Home from 'pages/Home/Home';
-import Movies from 'pages/Movies/Movies';
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
-import Cast from 'components/Cast/Cast';
-import Reviews from 'components/Reviews/Reviews';
-import SharedLayout from 'components/SharedLayout/SharedLayout';
+import { useState, lazy } from 'react';
 import {
   fetchMovieHome,
   fetchMovieDetalis,
@@ -13,6 +7,13 @@ import {
   fetchCast,
   fetchReviews,
 } from 'components/ApiMovie/ApiMovie';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('components/Cast/Cast'));
+const Reviews = lazy(() => import('components/Reviews/Reviews'));
+const SharedLayout = lazy(() => import('components/SharedLayout/SharedLayout'));
 
 export const App = () => {
   const [images, setImages] = useState([]);

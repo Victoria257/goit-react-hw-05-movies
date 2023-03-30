@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { NavLink, useParams, Outlet } from 'react-router-dom';
 
 const MovieDetails = ({ fetchMovieDetalis }) => {
@@ -62,7 +62,9 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
           <NavLink to={'reviews'}>Reviews</NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
