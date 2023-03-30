@@ -16,7 +16,7 @@ function Home({ fetchMovieHome, images, setImages }) {
       }
     };
     homes();
-  }, [setImages]);
+  }, [setImages, fetchMovieHome]);
 
   return (
     <div>

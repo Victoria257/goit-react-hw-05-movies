@@ -12,7 +12,7 @@ const Cast = ({ fetchCast }) => {
       setActors(data.cast);
     };
     cast();
-  }, [movieId]);
+  }, [movieId, fetchCast]);
 
   return (
     <ul>

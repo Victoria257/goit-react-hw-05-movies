@@ -19,7 +19,7 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
       }
     };
     detalis();
-  }, [fetchMovieDetalis]);
+  }, [fetchMovieDetalis, movieId]);
 
   const { poster_path, title, vote_average, overview, genres } = imagesId;
   const onGoBack = () => {};

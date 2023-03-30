@@ -21,7 +21,7 @@ const Movies = ({ fetchMovieSearch }) => {
       }
     };
     search();
-  }, [searchParams, fetchMovieSearch]);
+  }, [images, searchName, fetchMovieSearch]);
 
   const handleChange = event => {
     setSearchParams({ searchName: event.target.value });
