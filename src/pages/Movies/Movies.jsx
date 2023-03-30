@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 const Movies = ({ fetchMovieSearch }) => {
   const [images, setImages] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchName = searchParams.get('searchName') || '';
+
+  const location = useLocation();
 
   useEffect(() => {
     const search = async () => {
@@ -24,7 +26,9 @@ const Movies = ({ fetchMovieSearch }) => {
   }, [images, searchName, fetchMovieSearch]);
 
   const handleChange = event => {
-    setSearchParams({ searchName: event.target.value });
+    if (event.target.value === '') {
+      setSearchParams({});
+    } else setSearchParams({ searchName: event.target.value });
   };
 
   const formSubmit = event => {
@@ -49,7 +53,7 @@ const Movies = ({ fetchMovieSearch }) => {
         {images &&
           images.map(({ id, title }) => (
             <li key={id}>
-              <NavLink to={`${id}`}>
+              <NavLink to={`${id}`} state={{ from: location }}>
                 <p>{title}</p>
               </NavLink>
             </li>

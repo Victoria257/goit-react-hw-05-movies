@@ -1,10 +1,13 @@
 import { Suspense, useEffect, useState } from 'react';
-import { NavLink, useParams, Outlet } from 'react-router-dom';
+import { NavLink, useParams, Outlet, useLocation } from 'react-router-dom';
 
 const MovieDetails = ({ fetchMovieDetalis }) => {
   const [imagesId, setImagesId] = useState([]);
 
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
     const detalis = async () => {
@@ -22,28 +25,10 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
   }, [fetchMovieDetalis, movieId]);
 
   const { poster_path, title, vote_average, overview, genres } = imagesId;
-  const onGoBack = () => {};
-
-  // const fetchMovieDetalis = async () => {
-  //   const KEY_API = '1e5d776ce781b9601a1344aa67272955';
-  //   const URL_API = 'https://api.themoviedb.org/3/';
-  //   const response = await axios.get(
-  //     `${URL_API}movie/${movieId}?api_key=${KEY_API}&language=uk&region=uk`
-  //   );
-  //   return response.data;
-  // };
-
-  // fetchMovieDetalis();
-
-  // console.log(images);
-  // const changeImage = images.find(image => image.id === Number(movieId));
-  // console.log(movieId);
-  // console.log(changeImage);
-  // const { poster_path, title, vote_average, overview } = changeImage;
 
   return (
     <>
-      <button onClick={onGoBack}>Go back</button>
+      <NavLink to={backLink}>Go back</NavLink>
       <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
       <h2>{title}</h2>
       <p>User score: {vote_average}</p>

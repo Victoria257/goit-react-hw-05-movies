@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function Home({ fetchMovieHome, images, setImages }) {
+  const location = useLocation();
+
   useEffect(() => {
     const homes = async () => {
       try {
@@ -25,7 +27,7 @@ function Home({ fetchMovieHome, images, setImages }) {
         {images &&
           images.map(({ title, id, backdrop_path }) => (
             <li key={id}>
-              <NavLink to={`movies/${id}`}>
+              <NavLink to={`movies/${id}`} state={{ from: location }}>
                 <img
                   src={`https://image.tmdb.org/t/p/w200${backdrop_path}`}
                   alt={title}
