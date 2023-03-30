@@ -3,6 +3,7 @@ import { NavLink, useParams, Outlet } from 'react-router-dom';
 
 const MovieDetails = ({ fetchMovieDetalis }) => {
   const [imagesId, setImagesId] = useState([]);
+
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
   }, [fetchMovieDetalis]);
 
   const { poster_path, title, vote_average, overview, genres } = imagesId;
+  const onGoBack = () => {};
 
   // const fetchMovieDetalis = async () => {
   //   const KEY_API = '1e5d776ce781b9601a1344aa67272955';
@@ -41,6 +43,7 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
 
   return (
     <>
+      <button onClick={onGoBack}>Go back</button>
       <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
       <h2>{title}</h2>
       <p>User score: {vote_average}</p>
