@@ -1,0 +1,39 @@
+.container {
+  background-color: rgb(243, 215, 243);
+  padding: 20px;
+}
+
+.button {
+  padding: 0px 7px;
+  border: 1px solid rgb(191, 188, 188);
+  background-color: rgb(215, 215, 217);
+  border-radius: 5px;
+}
+
+.wrapper {
+  border-bottom: 2px solid grey;
+  display: flex;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.information {
+  margin-left: 20px;
+}
+.addInform {
+  border-bottom: 2px solid grey;
+}
+
+.addInform ul {
+  padding: 0px;
+  margin-right: 10px;
+  list-style: none;
+}
+
+.addInform li {
+  margin-top: 10px;
+}
+
+.genres span {
+  margin-right: 10px;
+}

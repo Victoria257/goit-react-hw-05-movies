@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import css from 'pages/Home/Home.module.css';
 
 function Home({ fetchMovieHome, images, setImages }) {
   const location = useLocation();
@@ -21,20 +22,20 @@ function Home({ fetchMovieHome, images, setImages }) {
   }, [setImages, fetchMovieHome]);
 
   return (
-    <div>
-      <h4>Home page</h4>
-      <ul>
+    <div className={css.home}>
+      <h4 className={css.title}>В тренді цього дня</h4>
+      <ul className={css.list}>
         {images &&
           images.map(({ title, id, backdrop_path }) => (
-            <li key={id}>
+            <li key={id} className={css.set}>
               <NavLink to={`movies/${id}`} state={{ from: location }}>
                 <img
+                  className={css.image}
                   src={`https://image.tmdb.org/t/p/w200${backdrop_path}`}
                   alt={title}
                 />
                 <p>{title}</p>
               </NavLink>
-              {/* <NavLink to="movies/:movieId"></NavLink> */}
             </li>
           ))}
       </ul>

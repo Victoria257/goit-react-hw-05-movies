@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { NavLink, useParams, Outlet, useLocation } from 'react-router-dom';
+import css from 'pages/MovieDetails/MovieDetails.module.css';
 
 const MovieDetails = ({ fetchMovieDetalis }) => {
   const [imagesId, setImagesId] = useState([]);
@@ -27,30 +28,42 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
   const { poster_path, title, vote_average, overview, genres } = imagesId;
 
   return (
-    <>
-      <NavLink to={backLink}>Go back</NavLink>
-      <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
-      <h2>{title}</h2>
-      <p>User score: {vote_average}</p>
-      <h3>Overview </h3>
-      <p>{overview} </p>
-      <h4>Generes</h4>
-      <div>
-        {genres && genres.map(({ id, name }) => <span key={id}>{name}</span>)}
+    <div className={css.container}>
+      <NavLink to={backLink} className={css.button}>
+        Go back
+      </NavLink>
+      <div className={css.wrapper}>
+        <img
+          src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+          alt={title}
+        />
+        <div className={css.information}>
+          <h2>{title}</h2>
+          <p>User score: {vote_average}</p>
+          <h3>Overview </h3>
+          <p>{overview} </p>
+          <h4>Generes</h4>
+          <div className={css.genres}>
+            {genres &&
+              genres.map(({ id, name }) => <span key={id}>{name}</span>)}
+          </div>
+        </div>
       </div>
-      <h5>Additional information</h5>
-      <ul>
-        <li>
-          <NavLink to={'cast'}>Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to={'reviews'}>Reviews</NavLink>
-        </li>
-      </ul>
+      <div className={css.addInform}>
+        <h4>Additional information</h4>
+        <ul>
+          <li>
+            <NavLink to={'cast'}>Cast</NavLink>
+          </li>
+          <li>
+            <NavLink to={'reviews'}>Reviews</NavLink>
+          </li>
+        </ul>
+      </div>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import css from 'pages/Movies/Movies.module.css';
 
 const Movies = ({ fetchMovieSearch }) => {
   const [images, setImages] = useState('');
@@ -37,8 +38,7 @@ const Movies = ({ fetchMovieSearch }) => {
   };
 
   return (
-    <div>
-      <h4>Movies</h4>
+    <div className={css.movie}>
       <form onSubmit={formSubmit}>
         <input
           type="text"

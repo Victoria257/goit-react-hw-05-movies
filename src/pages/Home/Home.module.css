@@ -1,0 +1,35 @@
+.home {
+  background-color: rgb(179, 156, 179);
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: -0.01em;
+
+  color: #2a0439;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.set {
+  width: calc((100% - 74px) / 6);
+  border: 2px solid gray;
+  text-align: center;
+  text-decoration: none;
+}
+
+.image {
+  width: 100%;
+  display: block;
+}
