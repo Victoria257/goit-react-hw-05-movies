@@ -20,6 +20,16 @@
 .information {
   margin-left: 20px;
 }
+
+.video ul {
+  padding: 0;
+  list-style: none;
+}
+
+.video li {
+  margin-bottom: 10px;
+}
+
 .addInform {
   border-bottom: 2px solid grey;
 }

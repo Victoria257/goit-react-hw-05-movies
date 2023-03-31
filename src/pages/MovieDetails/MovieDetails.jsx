@@ -14,7 +14,6 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
     const detalis = async () => {
       try {
         const data = await fetchMovieDetalis(movieId);
-        // console.log(data);
         setImagesId(data);
       } catch (error) {
         console.log(error);
@@ -25,7 +24,11 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
     detalis();
   }, [fetchMovieDetalis, movieId]);
 
-  const { poster_path, title, vote_average, overview, genres } = imagesId;
+  const { poster_path, title, vote_average, overview, genres, videos } =
+    imagesId;
+
+  const result = videos?.results || [];
+  console.log(result);
 
   return (
     <div className={css.container}>
@@ -46,6 +49,21 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
           <div className={css.genres}>
             {genres &&
               genres.map(({ id, name }) => <span key={id}>{name}</span>)}
+          </div>
+          <div className={css.video}>
+            <h4>Video</h4>
+            <ul>
+              {result.map(({ id, name, key }) => (
+                <li key={id}>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${key}`}
+                    target="_blank"
+                  >
+                    {name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
