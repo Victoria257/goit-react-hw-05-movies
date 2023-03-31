@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import css from 'pages/Movies/Movies.module.css';
 
 const Movies = ({ fetchMovieSearch }) => {
@@ -64,3 +65,7 @@ const Movies = ({ fetchMovieSearch }) => {
 };
 
 export default Movies;
+
+Movies.propTypes = {
+  fetchMovieSearch: PropTypes.func.isRequired,
+};

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Cast = ({ fetchCast }) => {
   const [actors, setActors] = useState('');
@@ -33,6 +34,10 @@ const Cast = ({ fetchCast }) => {
         ))}
     </ul>
   );
+};
+
+Cast.propTypes = {
+  fetchCast: PropTypes.func.isRequired,
 };
 
 export default Cast;

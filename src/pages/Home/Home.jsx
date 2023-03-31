@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import css from 'pages/Home/Home.module.css';
+import PropTypes from 'prop-types';
 
 function Home({ fetchMovieHome, images, setImages }) {
   const location = useLocation();
@@ -42,5 +43,11 @@ function Home({ fetchMovieHome, images, setImages }) {
     </div>
   );
 }
+
+Home.propTypes = {
+  fetchMovieHome: PropTypes.func.isRequired,
+  images: PropTypes.array,
+  setImages: PropTypes.func,
+};
 
 export default Home;

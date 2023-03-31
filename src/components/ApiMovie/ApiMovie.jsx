@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const KEY_API = '1e5d776ce781b9601a1344aa67272955';
 const URL_API = 'https://api.themoviedb.org/3/';
@@ -36,4 +37,20 @@ export const fetchReviews = async movieId => {
     `${URL_API}movie/${movieId}/reviews?api_key=${KEY_API}&language=ua-uk`
   );
   return response.data;
+};
+
+fetchMovieSearch.propTypes = {
+  name: PropTypes.string,
+};
+
+fetchMovieDetalis.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};
+
+fetchCast.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};
+
+fetchReviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };

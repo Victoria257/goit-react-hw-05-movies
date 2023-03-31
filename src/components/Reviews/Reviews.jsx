@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Reviews = ({ fetchReviews }) => {
   const [reviewList, setReviewList] = useState('');
@@ -32,6 +33,10 @@ const Reviews = ({ fetchReviews }) => {
       )}
     </ul>
   );
+};
+
+Reviews.propTypes = {
+  fetchReviews: PropTypes.func.isRequired,
 };
 
 export default Reviews;

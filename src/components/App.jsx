@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, lazy } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   fetchMovieHome,
   fetchMovieDetalis,
@@ -49,4 +51,12 @@ export const App = () => {
       </Route>
     </Routes>
   );
+};
+
+App.propTypes = {
+  fetchMovieHome: PropTypes.func,
+  fetchMovieDetalis: PropTypes.func,
+  fetchMovieSearch: PropTypes.func,
+  fetchCast: PropTypes.func,
+  fetchReviews: PropTypes.func,
 };

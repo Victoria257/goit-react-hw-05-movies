@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { NavLink, useParams, Outlet, useLocation } from 'react-router-dom';
 import css from 'pages/MovieDetails/MovieDetails.module.css';
+import PropTypes from 'prop-types';
 
 const MovieDetails = ({ fetchMovieDetalis }) => {
   const [imagesId, setImagesId] = useState([]);
@@ -28,7 +29,6 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
     imagesId;
 
   const result = videos?.results || [];
-  console.log(result);
 
   return (
     <div className={css.container}>
@@ -84,6 +84,10 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
       </Suspense>
     </div>
   );
+};
+
+MovieDetails.propTypes = {
+  fetchMovieDetalis: PropTypes.func.isRequired,
 };
 
 export default MovieDetails;
