@@ -58,6 +58,7 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
                   <a
                     href={`https://www.youtube.com/watch?v=${key}`}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     {name}
                   </a>
