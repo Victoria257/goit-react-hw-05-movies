@@ -17,6 +17,6 @@
   color: black;
 }
 
-.navlink:active {
+.navlink:global(.active) {
   color: red;
 }
