@@ -14,10 +14,9 @@ const Cast = ({ fetchCast }) => {
     };
     cast();
   }, [movieId, fetchCast]);
-
   return (
     <ul>
-      {actors &&
+      {actors.length > 0 ? (
         actors.map(({ id, name, character, profile_path }) => (
           <li key={id}>
             {profile_path ? (
@@ -31,7 +30,10 @@ const Cast = ({ fetchCast }) => {
             <p>{name}</p>
             <p>Character: {character}</p>
           </li>
-        ))}
+        ))
+      ) : (
+        <p>No photo</p>
+      )}
     </ul>
   );
 };

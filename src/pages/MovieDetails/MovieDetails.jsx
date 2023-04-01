@@ -53,17 +53,21 @@ const MovieDetails = ({ fetchMovieDetalis }) => {
           <div className={css.video}>
             <h4>Video</h4>
             <ul>
-              {result.map(({ id, name, key }) => (
-                <li key={id}>
-                  <a
-                    href={`https://www.youtube.com/watch?v=${key}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {name}
-                  </a>
-                </li>
-              ))}
+              {result > 0 ? (
+                result.map(({ id, name, key }) => (
+                  <li key={id}>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${key}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {name}
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <p>No video</p>
+              )}
             </ul>
           </div>
         </div>

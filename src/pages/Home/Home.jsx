@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import css from 'pages/Home/Home.module.css';
 import PropTypes from 'prop-types';
 
@@ -29,14 +29,14 @@ function Home({ fetchMovieHome, images, setImages }) {
         {images &&
           images.map(({ title, id, backdrop_path }) => (
             <li key={id} className={css.set}>
-              <NavLink to={`movies/${id}`} state={{ from: location }}>
+              <Link to={`movies/${id}`} state={{ from: location }}>
                 <img
                   className={css.image}
                   src={`https://image.tmdb.org/t/p/w200${backdrop_path}`}
                   alt={title}
                 />
                 <p>{title}</p>
-              </NavLink>
+              </Link>
             </li>
           ))}
       </ul>

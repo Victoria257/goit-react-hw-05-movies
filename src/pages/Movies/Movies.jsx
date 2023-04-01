@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import css from 'pages/Movies/Movies.module.css';
 
 const Movies = ({ fetchMovieSearch }) => {
   const [images, setImages] = useState('');
+  const [name, setName] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchName = searchParams.get('searchName') || '';
@@ -54,9 +55,9 @@ const Movies = ({ fetchMovieSearch }) => {
         {images &&
           images.map(({ id, title }) => (
             <li key={id}>
-              <NavLink to={`${id}`} state={{ from: location }}>
+              <Link to={`${id}`} state={{ from: location }}>
                 <p>{title}</p>
-              </NavLink>
+              </Link>
             </li>
           ))}
       </ul>
