@@ -20,6 +20,10 @@ const SharedLayout = lazy(() => import('components/SharedLayout/SharedLayout'));
 export const App = () => {
   const [images, setImages] = useState([]);
 
+  const onSubmit = event => {
+    console.log(event);
+  };
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -35,7 +39,9 @@ export const App = () => {
         ></Route>
         <Route
           path="movies"
-          element={<Movies fetchMovieSearch={fetchMovieSearch} />}
+          element={
+            <Movies fetchMovieSearch={fetchMovieSearch} onSubmit={onSubmit} />
+          }
         ></Route>
         <Route
           path="movies/:movieId"
