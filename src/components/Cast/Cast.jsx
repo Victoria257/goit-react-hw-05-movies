@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,6 +6,8 @@ const Cast = ({ fetchCast }) => {
   const [actors, setActors] = useState('');
 
   const { movieId } = useParams();
+
+  const location = useLocation();
 
   useEffect(() => {
     const cast = async () => {
