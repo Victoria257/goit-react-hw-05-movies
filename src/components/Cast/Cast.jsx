@@ -4,18 +4,27 @@ import PropTypes from 'prop-types';
 
 const Cast = ({ fetchCast }) => {
   const [actors, setActors] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
 
   useEffect(() => {
     const cast = async () => {
-      const data = await fetchCast(movieId);
-      setActors(data.cast);
+      try {
+        setIsLoading(true);
+        const data = await fetchCast(movieId);
+        setActors(data.cast);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     cast();
   }, [movieId, fetchCast]);
   return (
     <ul>
+      {isLoading && <p>Loading......</p>}
       {actors.length > 0 ? (
         actors.map(({ id, name, character, profile_path }) => (
           <li key={id}>
