@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Reviews = ({ fetchReviews }) => {
   const [reviewList, setReviewList] = useState('');
   const { movieId } = useParams();
-  const location = useLocation();
 
   useEffect(() => {
     const review = async () => {
